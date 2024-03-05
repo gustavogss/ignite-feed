@@ -1,8 +1,15 @@
-# React + Vite
+Aplicação tipo feed de comunicação e feedbacks - implementada em Reactjs e Jsx
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Projeto Ignite Feed :rocket:
+Cadastro e publicação de feedbacks
 
-Currently, two official plugins are available:
+## Tecnologias e Ferramentas utilizadas :robot:
+- [VsCode](https://code.visualstudio.com/)
+- [ReactJS](https://pt-br.reactjs.org/)
+- [Vite](https://vitejs.dev/guide/#scaffolding-your-first-vite-project)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+- [Phosphoricons](https://phosphoricons.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deploy :runner:
+
+
