@@ -1,5 +1,3 @@
-Aplicação tipo feed de comunicação e feedbacks - implementada em Reactjs e Jsx
-
 # Projeto Ignite Feed :rocket:
 Cadastro e publicação de feedbacks
 
