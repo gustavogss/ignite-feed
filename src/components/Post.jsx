@@ -1,30 +1,39 @@
 import { Avatar } from "./Avatar";
 import { Comments } from "./Comments";
 import styles from "./Post.module.css";
+import { format, formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
-const avatar = "https://github.com/gustavogss.png";
+export function Post({ author, content, publishedAt }) {
+  const avatar = "https://github.com/gustavogss.png";
+  const publishedDateFormat = format(
+    publishedAt,
+    "dd 'de' LLLL 'às' HH:mm'h'",
+    {
+      locale: ptBR,
+    }
+  );
+  const publishedDateCompare = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
 
-export function Post({ author, content }) {
   return (
     <article className={styles.post}>
       <header>
-        <div className={styles.author}>
-          <Avatar hasBorder img={avatar} />
+        <div className={styles.profile}>
+          <Avatar hasBorder img={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>{author}</strong>
-            <span className={styles.title}>{content}</span>
+            <strong>{author.name}</strong>
+            <span className={styles.title}>{author.role}</span>
           </div>
         </div>
-        <time title="04 de março de 2024" dateTime="2024-03-05 12:10:01">
-          Publicado a 1h
+        <time title={publishedDateFormat} dateTime={publishedAt.toISOString()}>
+          {publishedDateCompare}
         </time>
       </header>
       <div className={styles.content}>
-        <p> Fala Galera 👋 </p>
-        <p>Aqui está meu Post que acabei de subir para a plataforma</p>
-        <p>
-          <a href="#">👉 gustavogss</a>
-        </p>
+        <p> Conteúdo </p>
         <a href="#">#ignite</a> <a href="#">#react</a> <a href="">#post</a>
       </div>
 
