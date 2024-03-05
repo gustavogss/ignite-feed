@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Avatar } from "./Avatar";
 import { Comments } from "./Comments";
 import styles from "./Post.module.css";
@@ -5,6 +6,8 @@ import { format, formatDistanceToNow } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 
 export function Post({ author, content, publishedAt }) {
+  const [comments, setComments] = useState(["Muito bom, guga. Parabéns 👏👏"]);
+  const [newComment, setNewComment] = useState("");
   const avatar = "https://github.com/gustavogss.png";
   const publishedDateFormat = format(
     publishedAt,
@@ -17,6 +20,15 @@ export function Post({ author, content, publishedAt }) {
     locale: ptBR,
     addSuffix: true,
   });
+
+  function handleCreateComment() {
+    event.preventDefault();
+    setComments([...comments, newComment]);
+    setNewComment("");
+  }
+  function handleNewCommentChange() {
+    setNewComment(event.target.value);
+  }
 
   return (
     <article className={styles.post}>
@@ -33,21 +45,33 @@ export function Post({ author, content, publishedAt }) {
         </time>
       </header>
       <div className={styles.content}>
-        <p> Conteúdo </p>
+        {content.map((item) => {
+          item.type === "paragraph" ? (
+            <p>{item.content}</p>
+          ) : (
+            <p>
+              <a href="#">{item.content}</a>
+            </p>
+          );
+        })}
         <a href="#">#ignite</a> <a href="#">#react</a> <a href="">#post</a>
       </div>
 
-      <form className={styles.comments}>
+      <form onSubmit={handleCreateComment} className={styles.comments}>
         <strong>Deixe seu feedback</strong>
-        <textarea placeholder="Deixe aqui seu comentário: " />
+        <textarea
+          placeholder="Deixe aqui seu comentário: "
+          onChange={handleNewCommentChange}
+          value={newComment}
+        />
         <footer>
           <button type="submit">Publicar</button>
         </footer>
       </form>
       <div className={styles.commentsList}>
-        <Comments />
-        <Comments />
-        <Comments />
+        {comments.map((comment) => {
+          return <Comments content={comment} />;
+        })}
       </div>
     </article>
   );

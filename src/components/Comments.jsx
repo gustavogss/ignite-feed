@@ -4,7 +4,7 @@ import { Avatar } from "./Avatar";
 
 const avatar = "https://github.com/gustavogss.png";
 
-export function Comments() {
+export function Comments({ content }) {
   return (
     <div className={styles.container}>
       <Avatar hasBorder={false} img={avatar} />
@@ -21,7 +21,7 @@ export function Comments() {
               <Trash size={20} />
             </button>
           </header>
-          <p>Muito bom, guga. Parabéns 👏👏</p>
+          <p>{content}</p>
         </div>
         <footer>
           <button>
