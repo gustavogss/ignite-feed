@@ -4,7 +4,10 @@ import { Avatar } from "./Avatar";
 
 const avatar = "https://github.com/gustavogss.png";
 
-export function Comments({ content }) {
+export function Comments({ content, onDeleteComment }) {
+  function handleRemoveComment() {
+    onDeleteComment(content);
+  }
   return (
     <div className={styles.container}>
       <Avatar hasBorder={false} img={avatar} />
@@ -17,7 +20,7 @@ export function Comments({ content }) {
                 Cerca de 1h atrás
               </time>
             </div>
-            <button title="Deletar comentário">
+            <button title="Deletar comentário" onClick={handleRemoveComment}>
               <Trash size={20} />
             </button>
           </header>
