@@ -8,7 +8,6 @@ import ptBR from "date-fns/locale/pt-BR";
 export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState(["Muito bom, guga. Parabéns 👏👏"]);
   const [newComment, setNewComment] = useState("");
-  const avatar = "https://github.com/gustavogss.png";
   const publishedDateFormat = format(
     publishedAt,
     "dd 'de' LLLL 'às' HH:mm'h'",
@@ -20,6 +19,8 @@ export function Post({ author, content, publishedAt }) {
     locale: ptBR,
     addSuffix: true,
   });
+
+  const isEmptyComment = newComment.length === 0;
 
   function handleCreateComment() {
     event.preventDefault();
@@ -35,6 +36,15 @@ export function Post({ author, content, publishedAt }) {
       return comment !== commentToDelete;
     });
     setComments(commentsOneDelete);
+  }
+
+  function handleNewCommentInvalid() {
+    event.target.setCustomValidity("Esse campo é obrigatório");
+  }
+
+  function handleNewCommentChange() {
+    event.target.setCustomValidity("");
+    setNewComment(event.target.value);
   }
 
   return (
@@ -70,9 +80,13 @@ export function Post({ author, content, publishedAt }) {
           placeholder="Deixe aqui seu comentário: "
           onChange={handleNewCommentChange}
           value={newComment}
+          required
+          onInvalid={handleNewCommentInvalid}
         />
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isEmptyComment}>
+            Publicar
+          </button>
         </footer>
       </form>
       <div className={styles.commentsList}>
