@@ -1,4 +1,4 @@
-# Projeto Ignite Feed :rocket:
+# Projeto Ignite Feed 
 Cadastro e publicação de feedbacks
 
 ## Tecnologias e Ferramentas utilizadas :robot:
@@ -9,6 +9,7 @@ Cadastro e publicação de feedbacks
 - [Date FNS](https://date-fns.org/docs/Getting-Started)
 - [Phosphoricons](https://phosphoricons.com/)
 
-## Deploy :runner:
+## Deploy :rocket:
+
 
 
