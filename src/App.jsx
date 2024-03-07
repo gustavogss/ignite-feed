@@ -22,24 +22,6 @@ const posts = [
     ],
     publishedAt: new Date("2024-03-05 15:10:40"),
   },
-  {
-    id: 2,
-    author: {
-      avatarUrl:
-        "https://lh3.googleusercontent.com/a/ACg8ocJ-BzKFHxfcKHljHNMwm-xuNa2tjOAxD0Z1Gblbd4pR_TQ=s288-c-no",
-      name: "Guilherme",
-      role: "Mobile Developer",
-    },
-    content: [
-      { type: "paragraph", content: "Fala Galera 👋 " },
-      {
-        type: "paragraph",
-        content: "Aqui está meu Post que acabei de subir para a plataforma",
-      },
-      { type: "link", content: "github/gustavogss" },
-    ],
-    publishedAt: new Date("2024-03-04 15:10:40"),
-  },
 ];
 
 export function App() {
